@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+	</settings>
+	
+	<typeAliases>
+		<typeAlias alias="press" type="entity.Press"/>
+		<typeAlias alias="tohead" type="entity.ToHead"/>
+		<typeAlias alias="toone" type="entity.ToOne"/>
+		<typeAlias alias="user" type="entity.User"/>
+	</typeAliases>
+
+</configuration>
