@@ -1,10 +1,12 @@
 package entity;
 
+import java.sql.Timestamp;
+
 public class Press {
 	private int id;
 	private int user_Id;
 	private String title;
-	private String lastTime;
+	private Timestamp lastTime;
 	private Category category;
 	private String newsImage;
 	private String titleImage;
@@ -13,7 +15,7 @@ public class Press {
 	private String like;
 	private String comments;
 	public Press(){}
-	public Press(String title,String newsImage, String titleImage,String brief,String content,int user_Id,String lastTime){
+	public Press(String title,String newsImage, String titleImage,String brief,String content,int user_Id,Timestamp lastTime){
 		this.title=title;
 		this.newsImage=newsImage;
 		this.titleImage=titleImage;
@@ -22,7 +24,7 @@ public class Press {
 		this.user_Id=user_Id;
 		this.lastTime=lastTime;
 	}
-	public Press(int id,String title,String newsImage, String titleImage,String brief,String content,int user_Id,String lastTime){
+	public Press(int id,String title,String newsImage, String titleImage,String brief,String content,int user_Id,Timestamp lastTime){
 		this.id=id;
 		this.title=title;
 		this.newsImage=newsImage;
@@ -50,10 +52,10 @@ public class Press {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getLastTime() {
+	public Timestamp getLastTime() {
 		return lastTime;
 	}
-	public void setLastTime(String lastTime) {
+	public void setLastTime(Timestamp lastTime) {
 		this.lastTime = lastTime;
 	}
 	public String getNewsImage() {

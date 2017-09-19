@@ -20,7 +20,6 @@ public class UserController {
 	@Resource
 	UserService userservice;
 	
-	//��¼
 	@RequestMapping(value="login", method = RequestMethod.POST)
 	public @ResponseBody String login(String userAccount,String userPassword){
 		User user = new User();
@@ -55,7 +54,6 @@ public class UserController {
 		return "1";
 	}
 	
-	//�޸��û���Ϣ
 	@RequestMapping(value="update", method = RequestMethod.POST)
 	public @ResponseBody String updateUser(String account,String nickName,String password,String headPortrait,String qq,String city){
 		User u  = new User();

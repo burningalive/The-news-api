@@ -11,6 +11,7 @@
 		<typeAlias alias="tohead" type="entity.ToHead"/>
 		<typeAlias alias="toone" type="entity.ToOne"/>
 		<typeAlias alias="user" type="entity.User"/>
+		<typeAlias alias="category" type="entity.Category"/>
 	</typeAliases>
 
 </configuration>
