@@ -38,18 +38,17 @@
 		from
 		press,user,category
 		where
-		press.user_Id=user.id and press.category=(select id from category where name='NEWS')
+		press.user_Id=user.id and press.category=(select id from category where name='NEWS') and press.category=category.id
 		order by lastTime desc
 		limit 6
 	</select>
 	<select id="showHomePageArticle" resultMap="mainPageList">
 		select
-		press.id
-		pressId,title,lastTime,newsImage,titleImage,brief,authorImg,category.id categoryId,category.name categoryName
+		press.id pressId,title,lastTime,newsImage,titleImage,brief,authorImg,category.id categoryId,category.name categoryName
 		from
 		press,user,category
 		where
-		press.user_Id=user.id and press.category=(select id from category where name<![cdata[<>]]>'NEWS')
+		press.user_Id=user.id and press.category!=(select id from category where name = 'NEWS') and press.category=category.id
 		order by lastTime desc
 		limit 6
 	</select>
