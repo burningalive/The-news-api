@@ -30,8 +30,23 @@ public class PressController {
 		List<ToHead> allToHead = pressservice.showAllPress();
 		return allToHead;
 	}
-
+	
 	//
+	@RequestMapping(value = "selectAllNews", method = RequestMethod.POST)
+	@ResponseBody
+	public List<ToHead> showHomePageNews() {
+		List<ToHead> allToHead = pressservice.showHomePageNews();
+		return allToHead;
+	}
+	
+	//
+	@RequestMapping(value = "selectAllArticle", method = RequestMethod.POST)
+	 @ResponseBody
+	public List<ToHead> showHomePageArticle() {
+		List<ToHead> allToHead = pressservice.showHomePageArticle();
+		return allToHead;
+	}
+	
 	@RequestMapping(value = "selectOnePress", method = RequestMethod.POST)
 	public @ResponseBody
 	ToOne getOneNews(int id) {

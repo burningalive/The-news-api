@@ -2,73 +2,89 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.PressDao">
 
-	<!-- 
-		<select id="showAllPress" resultType="tohead">
-		    select
-		    press.id,title,lastTime,newsImage,titleImage,brief,authorImg
-		    from
-		    press,user
-		    where
-		    press.user_Id=user.id
-		    order by
-		 	lastTime desc
-		</select>
-	 -->
-	 <resultMap type="tohead" id="mainPageList">
-	 	<id property="id" column="pressId"/>
-	 	<result property="title" column="title"/>
-	 	<result property="lastTime" column="lastTime"/>
-	 	<result property="newsImage" column="newsImage"/>
-	 	<result property="titleImage" column="titleImage"/>
-	 	<result property="brief" column="brief"/>
-	 	<result property="authorImg" column="authorImg"/>
-	 	<association property="category" javaType="category">
-	 		<id property="id" column="categoryId"/>
-	 		<result property="name" column="categoryName"/>
-	 	</association>
-	 </resultMap>
-	 <select id="showAllPress" resultMap="mainPageList">
-		    select
-		    press.id pressId,title,lastTime,newsImage,titleImage,brief,authorImg,category.id categoryId,category.name categoryName
-		    from
-		    press,user,category
-		    where
-		    press.user_Id=user.id and press.category=category.id
-		    order by
-		 	lastTime desc
-		 	limit 8
-		</select>
-	 
+	<!-- <select id="showAllPress" resultType="tohead"> select press.id,title,lastTime,newsImage,titleImage,brief,authorImg 
+		from press,user where press.user_Id=user.id order by lastTime desc </select> -->
+	<resultMap type="tohead" id="mainPageList">
+		<id property="id" column="pressId" />
+		<result property="title" column="title" />
+		<result property="lastTime" column="lastTime" />
+		<result property="newsImage" column="newsImage" />
+		<result property="titleImage" column="titleImage" />
+		<result property="brief" column="brief" />
+		<result property="authorImg" column="authorImg" />
+		<association property="category" javaType="category">
+			<id property="id" column="categoryId" />
+			<result property="name" column="categoryName" />
+		</association>
+	</resultMap>
+	<select id="showAllPress" resultMap="mainPageList">
+		select
+		press.id
+		pressId,title,lastTime,newsImage,titleImage,brief,authorImg,category.id
+		categoryId,category.name categoryName
+		from
+		press,user,category
+		where
+		press.user_Id=user.id and press.category=category.id
+		order by lastTime desc
+		limit 8
+	</select>
+
+	<select id="showHomePageNews" resultMap="mainPageList">
+		select
+		press.id
+		pressId,title,lastTime,newsImage,titleImage,brief,authorImg,category.id
+		categoryId,category.name categoryName
+		from
+		press,user,category
+		where
+		press.user_Id=user.id and press.category=(select id from category where name='NEWS')
+		order by lastTime desc
+		limit 6
+	</select>
+	<select id="showHomePageArticle" resultMap="mainPageList">
+		select
+		press.id
+		pressId,title,lastTime,newsImage,titleImage,brief,authorImg,category.id categoryId,category.name categoryName
+		from
+		press,user,category
+		where
+		press.user_Id=user.id and press.category=(select id from category where name<![cdata[<>]]>'NEWS')
+		order by lastTime desc
+		limit 6
+	</select>
+
 	<select id="showOnePress" parameterType="toone" resultType="toone">
-	    select
-	    title,brief,lastTime,titleImage,content,authorImg,nickName 
-	    from
-	    press,user
-	    where
-	    press.user_Id=user.id
-	    and
-	    press.id=#{id}
+		select
+		title,brief,lastTime,titleImage,content,authorImg,nickName
+		from
+		press,user
+		where
+		press.user_Id=user.id
+		and
+		press.id=#{id}
 	</select>
 	<select id="delOnePress" resultType="press">
-	   delete 
-	   from
-	   press
-	   where
-	   id=#{id}
+		delete
+		from
+		press
+		where
+		id=#{id}
 	</select>
 	<select id="addOnePress" parameterType="press" resultType="press">
-	   insert
-	   into
-	   press(title,newsImage,titleImage,brief,content,user_Id,lastTime)
-	   value
-	   (#{title},#{newsImage},#{titleImage},#{brief},#{content},#{user_Id},#{lastTime})
+		insert
+		into
+		press(title,newsImage,titleImage,brief,content,user_Id,lastTime)
+		value
+		(#{title},#{newsImage},#{titleImage},#{brief},#{content},#{user_Id},#{lastTime})
 	</select>
 	<select id="updOnePress" parameterType="press" resultType="press">
-	  update
-	  press
-	  set
-	  title=#{title}, newsImage=#{newsImage}, titleImage=#{titleImage}, brief=#{brief},content=#{content},user_Id=#{user_Id},lastTime=#{lastTime}
-      where
-      id=#{id}	
+		update
+		press
+		set
+		title=#{title}, newsImage=#{newsImage}, titleImage=#{titleImage},
+		brief=#{brief},content=#{content},user_Id=#{user_Id},lastTime=#{lastTime}
+		where
+		id=#{id}
 	</select>
 </mapper>

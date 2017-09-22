@@ -18,6 +18,12 @@ public class PressService {
 	public List<ToHead> showAllPress(){
 		return dao.showAllPress();
 	}
+	public List<ToHead> showHomePageNews(){
+		return dao.showHomePageNews();
+	}
+	public List<ToHead> showHomePageArticle(){
+		return dao.showHomePageArticle();
+	}
 	public ToOne showOnePress(ToOne one){
 		return dao.showOnePress(one);
 	}
