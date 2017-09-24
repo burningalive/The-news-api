@@ -15,14 +15,20 @@ import entity.ToOne;
 public class PressService {
 	@Resource
 	PressDao dao;
+	private List<ToHead> addHref(List<ToHead> res) {
+		for(ToHead i: res){
+			i.setHref(i.getId());
+		}
+		return res;
+	}
 	public List<ToHead> showAllPress(){
-		return dao.showAllPress();
+		return addHref(dao.showAllPress());
 	}
 	public List<ToHead> showHomePageNews(){
-		return dao.showHomePageNews();
+		return addHref(dao.showHomePageNews());
 	}
 	public List<ToHead> showHomePageArticle(){
-		return dao.showHomePageArticle();
+		return addHref(dao.showHomePageArticle());
 	}
 	public ToOne showOnePress(ToOne one){
 		return dao.showOnePress(one);

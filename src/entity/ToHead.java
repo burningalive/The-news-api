@@ -13,7 +13,16 @@ public class ToHead {
 	private String 		titleImage;
 	private String 		brief;
 	private String 		authorImg;
-	
+	private String		href;
+	public String getHref() {
+		return href;
+	}
+	public void setHref(int id) {
+		this.href = "http://localhost:8080/#/newsInfo?press_id=" + id;
+	}
+	public void setLastTime(String lastTime) {
+		this.lastTime = lastTime;
+	}
 	public int getId() {
 		return id;
 	}
