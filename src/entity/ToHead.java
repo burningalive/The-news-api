@@ -20,9 +20,7 @@ public class ToHead {
 	public void setHref(int id) {
 		this.href = "http://localhost:8080/#/newsInfo?press_id=" + id;
 	}
-	public void setLastTime(String lastTime) {
-		this.lastTime = lastTime;
-	}
+
 	public int getId() {
 		return id;
 	}
@@ -40,10 +38,11 @@ public class ToHead {
 	}
 	public void setLastTime(Timestamp lastTime) {
 		String res = "";
-		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
 			res = sdf.format(lastTime);
 			this.lastTime = res;
+			System.out.println(res);
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.lastTime = lastTime.toString();

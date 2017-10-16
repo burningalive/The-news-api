@@ -15,6 +15,8 @@ public interface PressDao {
 	List<ToHead> showHomePageNews();
 
 	List<ToHead> showHomePageArticle();
+	
+	List<ToHead> showNewsPage();
 
 	ToOne showOnePress(ToOne one);
 

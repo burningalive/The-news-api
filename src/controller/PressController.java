@@ -23,7 +23,6 @@ public class PressController {
 	@Resource
 	PressService pressservice;
 
-	//
 	@RequestMapping(value = "selectAllPress", method = RequestMethod.POST)
 	public @ResponseBody
 	List<ToHead> getAllNews() {
@@ -31,7 +30,6 @@ public class PressController {
 		return allToHead;
 	}
 	
-	//
 	@RequestMapping(value = "selectAllNews", method = RequestMethod.POST)
 	@ResponseBody
 	public List<ToHead> showHomePageNews() {
@@ -39,7 +37,6 @@ public class PressController {
 		return allToHead;
 	}
 	
-	//
 	@RequestMapping(value = "selectAllArticle", method = RequestMethod.POST)
 	 @ResponseBody
 	public List<ToHead> showHomePageArticle() {
@@ -56,7 +53,6 @@ public class PressController {
 		return selectOnePress;
 	}
 
-	//
 	@RequestMapping(value = "deleteOnePress", method = RequestMethod.POST)
 	public @ResponseBody
 	String delOneNews(int id) {
@@ -67,7 +63,6 @@ public class PressController {
 		return "1";
 	}
 
-	//
 	@RequestMapping(value = "insertOnePress", method = RequestMethod.POST)
 	public @ResponseBody
 	String addOneNews(String title, String newsImage, String titleImage,
@@ -89,5 +84,12 @@ public class PressController {
 				content, user_Id, lastTime);
 		pressservice.updOnePress(press);
 		return "1";
+	}
+	
+	@RequestMapping("/selectNewsPage")
+	@ResponseBody
+	public List<ToHead> selectNewsPage() {
+		List<ToHead> res = pressservice.showNewsPage();
+		return res;
 	}
 }

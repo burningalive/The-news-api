@@ -30,6 +30,9 @@ public class PressService {
 	public List<ToHead> showHomePageArticle(){
 		return addHref(dao.showHomePageArticle());
 	}
+	public List<ToHead> showNewsPage() {
+		return addHref(dao.showNewsPage());
+	}
 	public ToOne showOnePress(ToOne one){
 		return dao.showOnePress(one);
 	}
