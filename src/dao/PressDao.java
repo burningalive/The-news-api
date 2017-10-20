@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import entity.Category;
 import entity.Press;
 import entity.ToHead;
 import entity.ToOne;
@@ -25,4 +26,10 @@ public interface PressDao {
 	void addOnePress(Press press);
 
 	void updOnePress(Press press);
+	
+	List<Category> getCategories();
+
+	List<ToHead> getArticleByCateId(int id);
+
+	List<ToHead> getArticles();
 }

@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import dao.PressDao;
+import entity.Category;
 import entity.Press;
 import entity.ToHead;
 import entity.ToOne;
@@ -15,23 +16,23 @@ import entity.ToOne;
 public class PressService {
 	@Resource
 	PressDao dao;
-	private List<ToHead> addHref(List<ToHead> res) {
+	private List<ToHead> addHrefHead(List<ToHead> res) {
 		for(ToHead i: res){
 			i.setHref(i.getId());
 		}
 		return res;
 	}
 	public List<ToHead> showAllPress(){
-		return addHref(dao.showAllPress());
+		return addHrefHead(dao.showAllPress());
 	}
 	public List<ToHead> showHomePageNews(){
-		return addHref(dao.showHomePageNews());
+		return addHrefHead(dao.showHomePageNews());
 	}
 	public List<ToHead> showHomePageArticle(){
-		return addHref(dao.showHomePageArticle());
+		return addHrefHead(dao.showHomePageArticle());
 	}
 	public List<ToHead> showNewsPage() {
-		return addHref(dao.showNewsPage());
+		return addHrefHead(dao.showNewsPage());
 	}
 	public ToOne showOnePress(ToOne one){
 		return dao.showOnePress(one);
@@ -45,6 +46,20 @@ public class PressService {
 	public void updOnePress(Press press){
 		dao.updOnePress(press);
 	}
-	
+	private List<Category> addHrefCate(List<Category> res) {
+		for(Category i: res){
+			i.setHref(i.getId());
+		}
+		return res;
+	}
+	public List<Category> getCategories(){
+		return addHrefCate(dao.getCategories());
+	}
+	public List<ToHead> getArticleByCateId(int id) {
+		return addHrefHead(dao.getArticleByCateId(id));
+	}
+	public List<ToHead> getArticles() {
+		return addHrefHead(dao.getArticles());
+	}
 	
 }

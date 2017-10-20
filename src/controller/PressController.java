@@ -1,9 +1,6 @@
 package controller;
 
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import service.PressService;
+import entity.Category;
 import entity.Press;
 import entity.ToHead;
 import entity.ToOne;
@@ -91,5 +89,19 @@ public class PressController {
 	public List<ToHead> selectNewsPage() {
 		List<ToHead> res = pressservice.showNewsPage();
 		return res;
+	}
+	
+	@RequestMapping("/getArticleByCateId")
+	@ResponseBody public List<ToHead> getArticleByCateId(int id){
+		return pressservice.getArticleByCateId(id);
+	}
+	@RequestMapping("/getCategories")
+	@ResponseBody public List<Category> getCategories(){
+		return pressservice.getCategories();
+	}
+	
+	@RequestMapping("/getArticles")
+	@ResponseBody public List<ToHead> getArticles(){
+		return pressservice.getArticles();
 	}
 }

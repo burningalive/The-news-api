@@ -98,4 +98,34 @@
 		where
 		id=#{id}
 	</select>
+	<select id="getCategories" resultType="category">
+		select * from category where name!='NEWS'
+	</select>
+	<select id="getArticleByCateId" resultMap="mainPageList" parameterType="int">
+		select
+		press.id
+		pressId,title,lastTime,newsImage,titleImage,brief,authorImg,category.id
+		categoryId,category.name categoryName
+		from
+		press,user,category
+		where
+		press.user_Id=user.id and press.category=category.id
+		and press.category=#{id}
+		order by lastTime desc
+		limit 21
+	</select>
+	
+	<select id="getArticles" resultMap="mainPageList">
+    	select
+		press.id
+		pressId,title,lastTime,newsImage,titleImage,brief,authorImg,category.id
+		categoryId,category.name categoryName
+		from
+		press,user,category
+		where
+		press.user_Id=user.id and press.category=category.id
+		and press.category!=(select id from category where name="NEWS")
+		order by lastTime desc
+		limit 21
+    </select>
 </mapper>

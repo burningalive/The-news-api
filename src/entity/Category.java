@@ -19,7 +19,7 @@ public class Category {
 	public String getHref() {
 		return href;
 	}
-	public void setHref(String href) {
-		this.href = href;
+	public void setHref(int id) {
+		this.href = "/#/more/articles"+id;
 	}
 }
