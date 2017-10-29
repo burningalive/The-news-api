@@ -20,6 +20,6 @@ public class Category {
 		return href;
 	}
 	public void setHref(int id) {
-		this.href = "/#/more/articles"+id;
+		this.href = "#/more/articles"+id;
 	}
 }

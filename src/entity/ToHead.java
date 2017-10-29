@@ -18,7 +18,7 @@ public class ToHead {
 		return href;
 	}
 	public void setHref(int id) {
-		this.href = "/#/newsInfo?press_id=" + id;
+		this.href = "#/newsInfo?press_id=" + id;
 	}
 
 	public int getId() {
